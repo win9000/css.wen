@@ -1,0 +1,132 @@
+@import url("fonts.css");/*also can: @import url(styles.css) only screen and (min-width:70em)...*/
+/*
+	 
+	test server:http://106.120.172.238/apache/
+	
+	for @media: width,height, with min- or max / device-width,device-height with max- or min-;
+						orientation : landscape; aspect-ration:16/9,4/3
+						resolution: d00dpi;
+
+*/
+
+html,body{ padding:0;margin: 0; width: 100%; height: 100%;
+	/* 
+		页面通用非标题字体 
+		font-style  font-variant font-weight font-size/line-height font-family
+		0.875em =12px 
+		将字体的根大小设置为10px,12px就是1.2em
+		font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, STHeiti, 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif;
+	*/
+	font-size:10px; font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'STHeiti', 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif;  letter-spacing: 0.1em; color:  #3b3a3a; }
+	
+a{font-size:1.4rem; margin-right: 1px;text-decoration:none;color:  black;}
+p,div{font-size:1.4rem; line-height: 1.5;}
+
+/*
+a{font:14px '宋体'; margin-right: 1px;}
+a:link {color:  #242424; text-decoration:none;}		未访问的链接 
+a:visited {color: #242424;}	已访问的链接 
+a:hover {color: #FF00FF}	 鼠标移动到链接上 
+a:active {color: #0000FF}	 选定的链接 */
+
+/*
+	英文字体,页面通用字体
+*/
+.englishFont{ 	font:1rem verdana; letter-spacing: 0; color:  #242424; }
+*[lang|="en"] {	font:1rem verdana; letter-spacing: 0; color:  #242424;}
+/*
+	段落标题字体
+*/
+h1,h2,h3{ font:1.6rem bold ; font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'STHeiti', 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif;margin-left: 2em; float: none; }
+h4,h5,h6{ font:1.4rem bold; font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'STHeiti', 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif;margin-left: 2em; float: none; }
+ol,ul{font:1.4rem bold; font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'STHeiti', 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif;margin-left: 2em; float: none; }
+
+
+.dateFont,time{ font:9pt verdana; letter-spacing: 0;}
+/*	page 属性，body 中可以有多个page属性的div
+	div作为page 可以使用jquery做页面转换效果
+*/
+[data-type=page],.divPage{ position: absolute; top:0; left: 0;width: 100%;min-height: 100%;padding: 0; margin: 0;text-align: center; }
+		/*	DIV 居中,不适合手机屏幕,
+			移动设备使用.divPage
+		*/
+		.centerContanier{ padding: 0; margin: 0 auto;max-width: 80%;min-height: 100%; background: #e15b5b; }
+
+/* ==========================================================================
+   栅格系统
+   block1-block4 小屏幕不可见其余小屏幕100%	
+   ========================================================================== */
+   	[class*="block"] {float: left;min-height: .1em;margin: 0px;padding: 0;border: 0;}
+	.block-1{ width: 10%; background: white;}
+	.block-2{ width: 20%; }
+	.block-3{ width: 30%; }
+	.block-4{ width: 40%; }
+	.block-5{ width: 50%; }
+	.block-6{ width: 60%; }
+	.block-7{ width: 70%; }
+	.block-8{ width: 80%; }	
+	.block-9{ width: 90%; background: black;}
+	/*小屏幕*/
+	/*pad屏幕*/
+/* ==========================================================================
+   页眉，因该被continer 包裹，固定位置和移动位置	
+   ========================================================================== */
+   .header{	max-width: 100%;min-height: 8em; clear: both; border-bottom: 1em black solid;}
+   
+   
+ /* ==========================================================================
+   导航，nav li 默认左图标，上图标在文字上加div就可以了	
+   不要有的加图标,有的不加.不容易对齐
+   ========================================================================== */  
+   .navBar,nav{max-width: 100%;}
+  
+   .navBar,nav ul{ list-style: none; margin: 0;padding: 0; display: inline-block;max-width: 100%;}
+   /*根据数量平均分配宽度,需要js来完成*/
+    .navBar,nav ul li{float: left; background:#ededed; padding: 10px;border-top: 1px solid #dedede; border-bottom:1px solid #dedede;
+	    					border-right: 1px solid #dedede;position: relative;}   									
+	    					
+    	.navBar,nav ul li:hover {background:#5b8fcf; color: white;}
+    	.navBar,nav ul li:first-child{border-left: 1px solid #dedede;}	
+    	.navBar,nav .actived{background: #5b8fcf; color: white;border: none;padding: 11px;}
+		.navBar,nav .actived:hover {background: #5b8fcf; color: white;border:none;padding: 11px;}
+		
+		/* 子菜单 小屏幕点击下拉显示 */
+		.menu_li{background:#ededed url(fonts/bottom_arrow_icon.png) no-repeat right bottom;}
+		.menu_li:hover{background:#5b8fcf url(fonts/down_arrow_icon.png) no-repeat right bottom;color: white;}	
+			.childMenu{position: absolute;top:45px;left:0;/*box-sizing:padding-box;不超过父元素宽度可加*/display: none;}
+			.navBar,nav ul li:first-child{border-left: 1px solid #dedede;}	
+			.childMenu li{position: relative;border-bottom: 1px solid #dedede;border-top: none;border-right:1px solid #dedede;border-left:1px solid #dedede;background: white;width: 100%;color: #3b3a3a;}	
+			.childMenu li:first-child{border-top: 1px solid #dedede;}
+ /* ==========================================================================
+   表单，
+   ========================================================================== */ 
+   form ul,ol{list-style: none;}
+   		form div{}
+   		input{color: #0a0909;font-size: 1.3rem;margin:0.5em 0;font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', 'STHeiti', 'WenQuanYi Micro Hei', SimSun, Helvetica, sans-serif; }
+   
+   
+		
+/*
+ * 分割线
+ */
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 8px 0px;  padding: 0;clear: both; }
+
+/* css 绘制三角*/
+#triangle-bottomright {
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid red;
+    border-left: 100px solid transparent;
+}
+/*test css*/
+.inputMarkClass{color:#888;}
+
+
+
+
+
+
+
+
+
